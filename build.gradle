@@ -3,7 +3,7 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'com.github.nextech'
+group = 'com.github.NexTach'
 version = '1.0.0'
 
 java {
