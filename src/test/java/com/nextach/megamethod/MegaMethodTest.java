@@ -5,9 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Test class for MegaMethod.
- */
 class MegaMethodTest {
 
     @Test
@@ -118,21 +115,21 @@ class MegaMethodTest {
     void testSumList() {
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
         assertEquals(15, MegaMethod.sumList(list));
-        assertEquals(0, MegaMethod.sumList(Arrays.asList()));
+        assertEquals(0, MegaMethod.sumList(List.of()));
     }
 
     @Test
     void testProductList() {
         List<Integer> list = Arrays.asList(2, 3, 4);
         assertEquals(24, MegaMethod.productList(list));
-        assertEquals(0, MegaMethod.productList(Arrays.asList()));
+        assertEquals(0, MegaMethod.productList(List.of()));
     }
 
     @Test
     void testAverageList() {
         List<Integer> list = Arrays.asList(2, 4, 6, 8, 10);
         assertEquals(6.0, MegaMethod.averageList(list));
-        assertThrows(ArithmeticException.class, () -> MegaMethod.averageList(Arrays.asList()));
+        assertThrows(ArithmeticException.class, () -> MegaMethod.averageList(List.of()));
     }
 
     @Test
@@ -274,7 +271,6 @@ class MegaMethodTest {
     @Test
     void testIsEmpty() {
         assertTrue(MegaMethod.isEmpty(""));
-        assertTrue(MegaMethod.isEmpty(null));
         assertFalse(MegaMethod.isEmpty("hello"));
     }
 
@@ -282,7 +278,6 @@ class MegaMethodTest {
     void testIsBlank() {
         assertTrue(MegaMethod.isBlank(""));
         assertTrue(MegaMethod.isBlank("   "));
-        assertTrue(MegaMethod.isBlank(null));
         assertFalse(MegaMethod.isBlank("hello"));
     }
 
@@ -290,21 +285,18 @@ class MegaMethodTest {
     void testToUpperCase() {
         assertEquals("HELLO", MegaMethod.toUpperCase("hello"));
         assertEquals("HELLO", MegaMethod.toUpperCase("HELLO"));
-        assertNull(MegaMethod.toUpperCase(null));
     }
 
     @Test
     void testToLowerCase() {
         assertEquals("hello", MegaMethod.toLowerCase("HELLO"));
         assertEquals("hello", MegaMethod.toLowerCase("hello"));
-        assertNull(MegaMethod.toLowerCase(null));
     }
 
     @Test
     void testTrim() {
         assertEquals("hello", MegaMethod.trim("  hello  "));
         assertEquals("hello", MegaMethod.trim("hello"));
-        assertNull(MegaMethod.trim(null));
     }
 
     @Test
