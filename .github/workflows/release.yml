@@ -52,7 +52,7 @@ jobs:
       - name: 태그 확인
         id: check_tag
         run: |
-          if git rev-parse "v${{ steps.get_version.outputs.version }}" >/dev/null 2>&1; then
+          if git rev-parse "${{ steps.get_version.outputs.version }}" >/dev/null 2>&1; then
             echo "exists=true" >> $GITHUB_OUTPUT
           else
             echo "exists=false" >> $GITHUB_OUTPUT
@@ -63,8 +63,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git tag -a "v${{ steps.get_version.outputs.version }}" -m "Release v${{ steps.get_version.outputs.version }}"
-          git push origin "v${{ steps.get_version.outputs.version }}"
+          git tag -a "${{ steps.get_version.outputs.version }}" -m "Release v${{ steps.get_version.outputs.version }}"
+          git push origin "${{ steps.get_version.outputs.version }}"
 
       - name: JAR 파일 생성
         run: ./gradlew assemble
@@ -74,9 +74,9 @@ jobs:
         uses: softprops/action-gh-release@v2.4.1
         with:
           tag_name: ${{ steps.get_version.outputs.version }}
-          name: Release v${{ steps.get_version.outputs.version }}
+          name: Release ${{ steps.get_version.outputs.version }}
           body: |
-            ## Mega-Method v${{ steps.get_version.outputs.version }}
+            ## Mega-Method ${{ steps.get_version.outputs.version }}
 
             ### 설치 방법
 
