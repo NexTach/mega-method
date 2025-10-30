@@ -27,7 +27,7 @@ repositories {
 
 ```gradle
 dependencies {
-    implementation 'com.github.nextech:mega-method:1.0.0'
+    implementation 'com.github.NexTach:mega-method:1.0.0'
 }
 ```
 
@@ -48,7 +48,7 @@ dependencies {
 
 ```xml
 <dependency>
-    <groupId>com.github.nextech</groupId>
+    <groupId>com.github.NexTach</groupId>
     <artifactId>mega-method</artifactId>
     <version>1.0.0</version>
 </dependency>
