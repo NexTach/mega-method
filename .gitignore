@@ -1,0 +1,48 @@
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+*.sw?
+.#*
+*#
+*~
+.classpath
+.project
+.settings/
+bin/
+target/
+dependency-reduced-pom.xml
+*.releaseBackup
+release.properties
+
+# IDEA
+*.iml
+*.ipr
+*.iws
+.idea/
+out/
+
+# Eclipse
+.metadata
+.recommenders/
+*.class
+
+# NetBeans
+nb-configuration.xml
+nbactions.xml
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~.nib
