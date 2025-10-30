@@ -355,4 +355,15 @@ class MegaMethodTest {
         assertEquals(0, MegaMethod.clamp(-5, 0, 10));
         assertEquals(10, MegaMethod.clamp(15, 0, 10));
     }
+
+    @Test
+    void testGenerateRandomString() {
+        int length = 10;
+        String randomString = MegaMethod.generateRandomString(length);
+        assertNotNull(randomString);
+        assertEquals(length, randomString.length());
+        for (char c : randomString.toCharArray()) {
+            assertTrue(Character.isLetterOrDigit(c));
+        }
+    }
 }

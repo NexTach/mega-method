@@ -3,6 +3,7 @@ package com.nextach.megamethod;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 /**
  * MegaMethod - 다양한 유틸리티 메서드 모음
@@ -670,6 +671,26 @@ public class MegaMethod {
     public static int clamp(int value, int min, int max) {
         if (value < min) return min;
         return Math.min(value, max);
+    }
+
+    /**
+     * 특정한 길이의 난수 문자열을 생성합니다.
+     * @param length 문자열 길이
+     * @return 생성된 난수 문자열
+     * @throws IllegalArgumentException length가 음수인 경우
+     */
+    public static String generateRandomString(int length) {
+        if (length < 0) {
+            throw new IllegalArgumentException("길이는 음수일 수 없습니다");
+        }
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        StringBuilder randomString = new StringBuilder(length);
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            int index = random.nextInt(characters.length());
+            randomString.append(characters.charAt(index));
+        }
+        return randomString.toString();
     }
 
     /**
