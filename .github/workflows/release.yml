@@ -42,9 +42,9 @@ jobs:
       - name: 버전 추출
         id: get_version
         run: |
-          VERSION=$(grep '^version' gradle.properties | cut -d'=' -f2 | tr -d ' ')
+          VERSION=$(grep '^version' gradle.properties | cut -d'=' -f2 | tr -d ' ' 2>/dev/null || true)
           if [ -z "$VERSION" ]; then
-            VERSION=$(grep '^version' build.gradle | grep -oP "version = '\K[^']+")
+            VERSION=$(grep "^version = " build.gradle | sed "s/version = '\(.*\)'/\1/")
           fi
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "버전: $VERSION"
