@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'com.github.NexTach'
-version = '1.0.1'
+version = '1.0.2'
 
 java {
     sourceCompatibility = JavaVersion.VERSION_21
@@ -28,11 +28,11 @@ test {
 
 publishing {
     publications {
-        maven(MavenPublication) {
+        create('maven', MavenPublication) {
             from components.java
-            groupId = group as Publication
-            artifactId = rootProject.name as Publication
-            version = version as Publication
+            groupId = 'com.github.NexTach'
+            artifactId = 'mega-method'
+            version = project.version.toString()
         }
     }
 }
