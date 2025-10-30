@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"com.nextach.megamethod","c":"MegaMethod","l":"add(int, int)","u":"add(int,int)"},{"p":"com.nextach.megamethod","c":"MegaMethod","l":"greet(String)","u":"greet(java.lang.String)"},{"p":"com.nextach.megamethod","c":"MegaMethod","l":"isPalindrome(String)","u":"isPalindrome(java.lang.String)"}];updateSearchResults();
