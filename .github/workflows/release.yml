@@ -1,0 +1,136 @@
+name: Auto Release
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/**'
+      - 'build.gradle'
+      - 'gradle.properties'
+      - 'README.md'
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 코드
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: JDK 21 설정
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Gradle 설정
+        uses: gradle/gradle-build-action@v3
+
+      - name: 빌드 및 테스트
+        run: ./gradlew build test
+
+      - name: Javadoc 생성
+        run: ./gradlew javadoc
+
+      - name: 버전 추출
+        id: get_version
+        run: |
+          VERSION=$(grep '^version' gradle.properties | cut -d'=' -f2 | tr -d ' ')
+          if [ -z "$VERSION" ]; then
+            VERSION=$(grep '^version' build.gradle | grep -oP "version = '\K[^']+")
+          fi
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "버전: $VERSION"
+
+      - name: 태그 확인
+        id: check_tag
+        run: |
+          if git rev-parse "v${{ steps.get_version.outputs.version }}" >/dev/null 2>&1; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: 태그 생성 및 푸시
+        if: steps.check_tag.outputs.exists == 'false'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a "v${{ steps.get_version.outputs.version }}" -m "Release v${{ steps.get_version.outputs.version }}"
+          git push origin "v${{ steps.get_version.outputs.version }}"
+
+      - name: JAR 파일 생성
+        run: ./gradlew assemble
+
+      - name: GitHub Release 생성
+        if: steps.check_tag.outputs.exists == 'false'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.get_version.outputs.version }}
+          name: Release v${{ steps.get_version.outputs.version }}
+          body: |
+            ## Mega-Method v${{ steps.get_version.outputs.version }}
+
+            ### 설치 방법
+
+            #### Gradle
+            ```gradle
+            repositories {
+                maven { url 'https://jitpack.io' }
+            }
+
+            dependencies {
+                implementation 'com.github.NexTach:mega-method:${{ steps.get_version.outputs.version }}'
+            }
+            ```
+
+            #### Maven
+            ```xml
+            <repositories>
+                <repository>
+                    <id>jitpack.io</id>
+                    <url>https://jitpack.io</url>
+                </repository>
+            </repositories>
+
+            <dependency>
+                <groupId>com.github.NexTach</groupId>
+                <artifactId>mega-method</artifactId>
+                <version>${{ steps.get_version.outputs.version }}</version>
+            </dependency>
+            ```
+
+            ### 변경사항
+            - 자세한 내용은 커밋 히스토리를 참조하세요
+
+            ### 문서
+            - [README](https://github.com/${{ github.repository }}/blob/main/README.md)
+            - [Javadoc](https://javadoc.jitpack.io/com/github/NexTach/mega-method/${{ steps.get_version.outputs.version }}/javadoc/)
+          files: |
+            build/libs/*.jar
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Javadoc 배포 준비
+        if: steps.check_tag.outputs.exists == 'false'
+        run: |
+          mkdir -p javadoc-deploy
+          cp -r build/docs/javadoc/* javadoc-deploy/
+
+      - name: Javadoc을 GitHub Pages에 배포
+        if: steps.check_tag.outputs.exists == 'false'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./javadoc-deploy
+          destination_dir: javadoc/v${{ steps.get_version.outputs.version }}
+          keep_files: true
