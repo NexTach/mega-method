@@ -798,6 +798,117 @@ public class MegaMethod {
     }
 
     /**
+     * ASCII 값을 문자로 변환합니다.
+     *
+     * @param ascii ASCII 값
+     * @return 해당 ASCII 값에 대응하는 문자
+     * @throws IllegalArgumentException ascii가 0에서 127 사이가 아닌 경우
+     */
+    public static char asciiToChar(int ascii) {
+        if (ascii < 0 || ascii > 127) {
+            throw new IllegalArgumentException("ASCII 값은 0에서 127 사이여야 합니다");
+        }
+        return (char) ascii;
+    }
+
+    /**
+     * ASCII 값 배열을 문자열로 변환합니다.
+     *
+     * @param asciiArray ASCII 값 배열
+     * @return 해당 ASCII 값들에 대응하는 문자열
+     * @throws IllegalArgumentException 배열에 0에서 127 사이가 아닌 값이 포함된 경우
+     */
+    public static String asciiArrayToString(int[] asciiArray) {
+        if (asciiArray == null) {
+            return "";
+        }
+        StringBuilder str = new StringBuilder();
+        for (int ascii : asciiArray) {
+            if (ascii < 0 || ascii > 127) {
+                throw new IllegalArgumentException("ASCII 값은 0에서 127 사이여야 합니다");
+            }
+            str.append((char) ascii);
+        }
+        return str.toString();
+    }
+
+    /**
+     * 단어 갯수를 인자로 받아서 그 단어 갯수만큼 랜덤하게 조합하여 문장 반환
+     *
+     * @param wordCount 단어 갯수
+     * @return 생성된 랜덤 문장
+     * @throws IllegalArgumentException wordCount가 음수인 경우
+     */
+    public static String generateRandomSentence(int wordCount) {
+        if (wordCount < 0) {
+            throw new IllegalArgumentException("단어 갯수는 음수일 수 없습니다");
+        }
+        String[] sampleWords = {
+                "the", "quick", "brown", "fox", "jumps", "over", "lazy", "dog",
+                "lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing", "elit",
+                "java", "python", "code", "developer", "openai", "chatgpt", "function", "variable",
+                "class", "object", "method", "string", "integer", "array", "list", "map",
+                "random", "generate", "example", "test", "sample", "utility", "library", "framework",
+                "computer", "science", "programming", "software", "hardware", "network", "internet", "database",
+                "algorithm", "data", "structure", "performance", "optimization", "design", "pattern", "architecture"
+        };
+        Random random = new Random();
+        StringBuilder sentence = new StringBuilder();
+        for (int i = 0; i < wordCount; i++) {
+            String word = sampleWords[random.nextInt(sampleWords.length)];
+            sentence.append(word);
+            if (i < wordCount - 1) {
+                sentence.append(" ");
+            }
+        }
+        return sentence.toString();
+    }
+
+    /**
+     * 두 문자열이 애너그램인지 확인합니다.
+     * <p>애너그램은 동일한 문자로 구성된 다른 순서의
+     * 문자열을 의미합니다. 대소문자를 구분하지 않습니다.</p>
+     *
+     * @param str1 첫 번째 문자열 (null 가능)
+     * @param str2 두 번째 문자열 (null 가능)
+     * @return 애너그램이면 true, 아니면 false. null인 경우 false를 반환
+     */
+    public static boolean areAnagrams(String str1, String str2) {
+        if (str1 == null || str2 == null) {
+            return false;
+        }
+        String cleanedStr1 = str1.replaceAll("\\s+", "").toLowerCase();
+        String cleanedStr2 = str2.replaceAll("\\s+", "").toLowerCase();
+        char[] charArray1 = cleanedStr1.toCharArray();
+        char[] charArray2 = cleanedStr2.toCharArray();
+        Arrays.sort(charArray1);
+        Arrays.sort(charArray2);
+        return Arrays.equals(charArray1, charArray2);
+    }
+
+    /**
+     * 주어진 숫자가 피보나치 수열에 속하는지 확인합니다.
+     * <p>피보나치 수열은 0, 1로 시작하며, 이후 각 항은 앞의 두 항의 합입니다.</p>
+     *
+     * @param n 검사할 숫자
+     * @return 피보나치 수열에 속하면 true, 아니면 false
+     * @throws IllegalArgumentException n이 음수인 경우
+     */
+    public static boolean isFibonacci(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("n은 0 이상이어야 합니다");
+        }
+        int a = 0;
+        int b = 1;
+        while (a < n) {
+            int next = a + b;
+            a = b;
+            b = next;
+        }
+        return a == n;
+    }
+
+    /**
      * 유틸리티 클래스이므로 인스턴스화를 방지합니다.
      */
     private MegaMethod() {

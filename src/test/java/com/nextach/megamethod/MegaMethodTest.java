@@ -411,4 +411,87 @@ class MegaMethodTest {
         assertThrows(IllegalArgumentException.class, () -> MegaMethod.stringToAsciiArray("Hello한글"));
         assertThrows(IllegalArgumentException.class, () -> MegaMethod.stringToAsciiArray("Test😀"));
     }
+
+    @Test
+    void testAsciiToChar() {
+        assertEquals('A', MegaMethod.asciiToChar(65));
+        assertEquals('a', MegaMethod.asciiToChar(97));
+        assertEquals('0', MegaMethod.asciiToChar(48));
+        assertEquals(' ', MegaMethod.asciiToChar(32));
+    }
+
+    @Test
+    void testAsciiToCharWithInvalidRange() {
+        assertThrows(IllegalArgumentException.class, () -> MegaMethod.asciiToChar(-1));
+        assertThrows(IllegalArgumentException.class, () -> MegaMethod.asciiToChar(128));
+        assertThrows(IllegalArgumentException.class, () -> MegaMethod.asciiToChar(200));
+    }
+
+    @Test
+    void testAsciiArrayToString() {
+        assertEquals("Hello", MegaMethod.asciiArrayToString(new int[]{72, 101, 108, 108, 111}));
+        assertEquals("ABC", MegaMethod.asciiArrayToString(new int[]{65, 66, 67}));
+        assertEquals("", MegaMethod.asciiArrayToString(new int[]{}));
+        assertEquals("", MegaMethod.asciiArrayToString(null));
+    }
+
+    @Test
+    void testAsciiArrayToStringWithInvalidValues() {
+        assertThrows(IllegalArgumentException.class, () -> MegaMethod.asciiArrayToString(new int[]{72, 101, 128}));
+        assertThrows(IllegalArgumentException.class, () -> MegaMethod.asciiArrayToString(new int[]{-1, 65}));
+    }
+
+    @Test
+    void testGenerateRandomSentence() {
+        int wordCount = 10;
+        String sentence = MegaMethod.generateRandomSentence(wordCount);
+        assertNotNull(sentence);
+        String[] words = sentence.split(" ");
+        assertEquals(wordCount, words.length);
+
+        String emptyString = MegaMethod.generateRandomSentence(0);
+        assertEquals("", emptyString);
+    }
+
+    @Test
+    void testGenerateRandomSentenceWithNegativeCount() {
+        assertThrows(IllegalArgumentException.class, () -> MegaMethod.generateRandomSentence(-1));
+    }
+
+    @Test
+    void testAreAnagrams() {
+        assertTrue(MegaMethod.areAnagrams("listen", "silent"));
+        assertTrue(MegaMethod.areAnagrams("evil", "vile"));
+        assertTrue(MegaMethod.areAnagrams("a gentleman", "elegant man"));
+        assertTrue(MegaMethod.areAnagrams("Listen", "Silent"));
+        assertFalse(MegaMethod.areAnagrams("hello", "world"));
+        assertFalse(MegaMethod.areAnagrams("test", "testing"));
+    }
+
+    @Test
+    void testAreAnagramsWithNull() {
+        assertFalse(MegaMethod.areAnagrams(null, "test"));
+        assertFalse(MegaMethod.areAnagrams("test", null));
+        assertFalse(MegaMethod.areAnagrams(null, null));
+    }
+
+    @Test
+    void testIsFibonacci() {
+        assertTrue(MegaMethod.isFibonacci(0));
+        assertTrue(MegaMethod.isFibonacci(1));
+        assertTrue(MegaMethod.isFibonacci(2));
+        assertTrue(MegaMethod.isFibonacci(3));
+        assertTrue(MegaMethod.isFibonacci(5));
+        assertTrue(MegaMethod.isFibonacci(8));
+        assertTrue(MegaMethod.isFibonacci(13));
+        assertTrue(MegaMethod.isFibonacci(21));
+        assertFalse(MegaMethod.isFibonacci(4));
+        assertFalse(MegaMethod.isFibonacci(6));
+        assertFalse(MegaMethod.isFibonacci(10));
+    }
+
+    @Test
+    void testIsFibonacciWithNegative() {
+        assertThrows(IllegalArgumentException.class, () -> MegaMethod.isFibonacci(-1));
+    }
 }
