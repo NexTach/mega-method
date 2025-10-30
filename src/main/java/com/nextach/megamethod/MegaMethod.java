@@ -21,6 +21,7 @@ public class MegaMethod {
      * 인사 메시지를 생성합니다.
      * <p>주어진 이름에 대한 인사 메시지를 반환합니다.
      * 이름이 null이거나 공백인 경우 기본 인사 메시지를 반환합니다.</p>
+     *
      * @param name 인사할 이름 (null 또는 빈 문자열 가능)
      * @return 생성된 인사 메시지
      */
@@ -34,6 +35,7 @@ public class MegaMethod {
     /**
      * 두 정수를 더합니다.
      * <p>주어진 두 정수의 합을 계산하여 반환합니다.</p>
+     *
      * @param a 첫 번째 정수
      * @param b 두 번째 정수
      * @return a와 b의 합
@@ -45,6 +47,7 @@ public class MegaMethod {
     /**
      * 두 정수를 뺍니다.
      * <p>첫 번째 정수에서 두 번째 정수를 뺀 결과를 반환합니다.</p>
+     *
      * @param a 첫 번째 정수
      * @param b 두 번째 정수
      * @return a에서 b를 뺀 값
@@ -56,6 +59,7 @@ public class MegaMethod {
     /**
      * 두 정수를 곱합니다.
      * <p>주어진 두 정수의 곱을 계산하여 반환합니다.</p>
+     *
      * @param a 첫 번째 정수
      * @param b 두 번째 정수
      * @return a와 b의 곱
@@ -67,6 +71,7 @@ public class MegaMethod {
     /**
      * 두 정수를 나눕니다.
      * <p>첫 번째 정수를 두 번째 정수로 나눈 결과를 반환합니다.</p>
+     *
      * @param a 첫 번째 정수 (피제수)
      * @param b 두 번째 정수 (제수)
      * @return a를 b로 나눈 몫
@@ -82,6 +87,7 @@ public class MegaMethod {
     /**
      * 두 정수의 나머지를 계산합니다.
      * <p>첫 번째 정수를 두 번째 정수로 나눈 나머지를 반환합니다.</p>
+     *
      * @param a 첫 번째 정수 (피제수)
      * @param b 두 번째 정수 (제수)
      * @return a를 b로 나눈 나머지
@@ -98,6 +104,7 @@ public class MegaMethod {
      * 문자열이 회문(palindrome)인지 확인합니다.
      * <p>회문은 앞에서 읽으나 뒤에서 읽으나 동일한 문자열을 의미합니다.
      * 공백은 무시되며, 대소문자를 구분하지 않습니다.</p>
+     *
      * @param text 검사할 문자열 (null 가능)
      * @return 회문이면 true, 아니면 false. null인 경우 false를 반환
      */
@@ -121,6 +128,7 @@ public class MegaMethod {
     /**
      * 피보나치 수열의 n번째 항을 계산합니다.
      * <p>피보나치 수열은 0, 1로 시작하며, 이후 각 항은 앞의 두 항의 합입니다.</p>
+     *
      * @param n 계산할 항의 위치 (0부터 시작)
      * @return n번째 피보나치 수
      * @throws IllegalArgumentException n이 음수인 경우
@@ -145,6 +153,7 @@ public class MegaMethod {
     /**
      * 정수 배열을 리스트로 변환합니다.
      * <p>주어진 정수 배열을 List&lt;Integer&gt;로 변환하여 반환합니다.</p>
+     *
      * @param array 변환할 정수 배열
      * @return 배열 요소를 포함하는 리스트
      * @throws NullPointerException array가 null인 경우
@@ -163,7 +172,8 @@ public class MegaMethod {
     /**
      * 제네릭 배열을 리스트로 변환합니다.
      * <p>주어진 배열을 List로 변환하여 반환합니다.</p>
-     * @param <T> 배열 요소의 타입
+     *
+     * @param <T>   배열 요소의 타입
      * @param array 변환할 배열
      * @return 배열 요소를 포함하는 리스트
      * @throws NullPointerException array가 null인 경우
@@ -179,6 +189,7 @@ public class MegaMethod {
     /**
      * 리스트의 모든 정수 요소를 더합니다.
      * <p>리스트에 있는 모든 정수의 합을 계산하여 반환합니다.</p>
+     *
      * @param list 합을 계산할 정수 리스트
      * @return 리스트 요소들의 합
      * @throws NullPointerException list가 null인 경우
@@ -199,6 +210,7 @@ public class MegaMethod {
     /**
      * 리스트의 모든 정수 요소를 곱합니다.
      * <p>리스트에 있는 모든 정수의 곱을 계산하여 반환합니다.</p>
+     *
      * @param list 곱을 계산할 정수 리스트
      * @return 리스트 요소들의 곱
      * @throws NullPointerException list가 null인 경우
@@ -222,10 +234,11 @@ public class MegaMethod {
     /**
      * 리스트의 모든 정수 요소의 평균을 계산합니다.
      * <p>리스트에 있는 모든 정수의 평균을 계산하여 반환합니다.</p>
+     *
      * @param list 평균을 계산할 정수 리스트
      * @return 리스트 요소들의 평균
      * @throws NullPointerException list가 null인 경우
-     * @throws ArithmeticException list가 비어있는 경우
+     * @throws ArithmeticException  list가 비어있는 경우
      */
     public static double averageList(List<Integer> list) {
         if (list == null) {
@@ -240,10 +253,11 @@ public class MegaMethod {
     /**
      * 두 리스트의 요소별 덧셈을 수행합니다.
      * <p>두 리스트의 같은 인덱스에 있는 요소끼리 더한 결과 리스트를 반환합니다.</p>
+     *
      * @param list1 첫 번째 정수 리스트
      * @param list2 두 번째 정수 리스트
      * @return 요소별 덧셈 결과 리스트
-     * @throws NullPointerException list1 또는 list2가 null인 경우
+     * @throws NullPointerException     list1 또는 list2가 null인 경우
      * @throws IllegalArgumentException 두 리스트의 크기가 다른 경우
      */
     public static List<Integer> addLists(List<Integer> list1, List<Integer> list2) {
@@ -269,10 +283,11 @@ public class MegaMethod {
     /**
      * 두 리스트의 요소별 뺄셈을 수행합니다.
      * <p>두 리스트의 같은 인덱스에 있는 요소끼리 뺀 결과 리스트를 반환합니다.</p>
+     *
      * @param list1 첫 번째 정수 리스트
      * @param list2 두 번째 정수 리스트
      * @return 요소별 뺄셈 결과 리스트
-     * @throws NullPointerException list1 또는 list2가 null인 경우
+     * @throws NullPointerException     list1 또는 list2가 null인 경우
      * @throws IllegalArgumentException 두 리스트의 크기가 다른 경우
      */
     public static List<Integer> subtractLists(List<Integer> list1, List<Integer> list2) {
@@ -298,10 +313,11 @@ public class MegaMethod {
     /**
      * 두 리스트의 요소별 곱셈을 수행합니다.
      * <p>두 리스트의 같은 인덱스에 있는 요소끼리 곱한 결과 리스트를 반환합니다.</p>
+     *
      * @param list1 첫 번째 정수 리스트
      * @param list2 두 번째 정수 리스트
      * @return 요소별 곱셈 결과 리스트
-     * @throws NullPointerException list1 또는 list2가 null인 경우
+     * @throws NullPointerException     list1 또는 list2가 null인 경우
      * @throws IllegalArgumentException 두 리스트의 크기가 다른 경우
      */
     public static List<Integer> multiplyLists(List<Integer> list1, List<Integer> list2) {
@@ -327,12 +343,13 @@ public class MegaMethod {
     /**
      * 두 리스트의 요소별 나눗셈을 수행합니다.
      * <p>두 리스트의 같은 인덱스에 있는 요소끼리 나눈 결과 리스트를 반환합니다.</p>
+     *
      * @param list1 첫 번째 정수 리스트
      * @param list2 두 번째 정수 리스트
      * @return 요소별 나눗셈 결과 리스트
-     * @throws NullPointerException list1 또는 list2가 null인 경우
+     * @throws NullPointerException     list1 또는 list2가 null인 경우
      * @throws IllegalArgumentException 두 리스트의 크기가 다른 경우
-     * @throws ArithmeticException list2에 0이 포함된 경우
+     * @throws ArithmeticException      list2에 0이 포함된 경우
      */
     public static List<Double> divideLists(List<Integer> list1, List<Integer> list2) {
         if (list1 == null || list2 == null) {
@@ -359,6 +376,7 @@ public class MegaMethod {
 
     /**
      * 숫자의 절댓값을 반환합니다.
+     *
      * @param n 정수
      * @return n의 절댓값
      */
@@ -368,6 +386,7 @@ public class MegaMethod {
 
     /**
      * 두 숫자 중 큰 값을 반환합니다.
+     *
      * @param a 첫 번째 정수
      * @param b 두 번째 정수
      * @return a와 b 중 큰 값
@@ -378,6 +397,7 @@ public class MegaMethod {
 
     /**
      * 두 숫자 중 작은 값을 반환합니다.
+     *
      * @param a 첫 번째 정수
      * @param b 두 번째 정수
      * @return a와 b 중 작은 값
@@ -388,6 +408,7 @@ public class MegaMethod {
 
     /**
      * 숫자의 제곱을 계산합니다.
+     *
      * @param n 정수
      * @return n의 제곱
      */
@@ -397,6 +418,7 @@ public class MegaMethod {
 
     /**
      * 숫자의 세제곱을 계산합니다.
+     *
      * @param n 정수
      * @return n의 세제곱
      */
@@ -406,7 +428,8 @@ public class MegaMethod {
 
     /**
      * 거듭제곱을 계산합니다.
-     * @param base 밑
+     *
+     * @param base     밑
      * @param exponent 지수
      * @return base의 exponent 제곱
      */
@@ -423,6 +446,7 @@ public class MegaMethod {
 
     /**
      * 숫자가 짝수인지 확인합니다.
+     *
      * @param n 정수
      * @return 짝수면 true, 아니면 false
      */
@@ -432,6 +456,7 @@ public class MegaMethod {
 
     /**
      * 숫자가 홀수인지 확인합니다.
+     *
      * @param n 정수
      * @return 홀수면 true, 아니면 false
      */
@@ -441,6 +466,7 @@ public class MegaMethod {
 
     /**
      * 숫자가 소수인지 확인합니다.
+     *
      * @param n 정수
      * @return 소수면 true, 아니면 false
      */
@@ -458,6 +484,7 @@ public class MegaMethod {
 
     /**
      * 팩토리얼을 계산합니다.
+     *
      * @param n 정수 (0 이상)
      * @return n!
      * @throws IllegalArgumentException n이 음수인 경우
@@ -476,6 +503,7 @@ public class MegaMethod {
 
     /**
      * 최대공약수(GCD)를 계산합니다.
+     *
      * @param a 첫 번째 정수
      * @param b 두 번째 정수
      * @return a와 b의 최대공약수
@@ -493,6 +521,7 @@ public class MegaMethod {
 
     /**
      * 최소공배수(LCM)를 계산합니다.
+     *
      * @param a 첫 번째 정수
      * @param b 두 번째 정수
      * @return a와 b의 최소공배수
@@ -504,6 +533,7 @@ public class MegaMethod {
 
     /**
      * 문자열을 뒤집습니다.
+     *
      * @param str 뒤집을 문자열
      * @return 뒤집힌 문자열
      */
@@ -514,6 +544,7 @@ public class MegaMethod {
 
     /**
      * 문자열의 길이를 반환합니다.
+     *
      * @param str 문자열
      * @return 문자열의 길이, null이면 0
      */
@@ -523,6 +554,7 @@ public class MegaMethod {
 
     /**
      * 문자열이 비어있는지 확인합니다.
+     *
      * @param str 문자열
      * @return 비어있으면 true, 아니면 false
      */
@@ -532,6 +564,7 @@ public class MegaMethod {
 
     /**
      * 문자열이 공백만 포함하는지 확인합니다.
+     *
      * @param str 문자열
      * @return 공백만 포함하면 true, 아니면 false
      */
@@ -541,6 +574,7 @@ public class MegaMethod {
 
     /**
      * 문자열을 대문자로 변환합니다.
+     *
      * @param str 문자열
      * @return 대문자로 변환된 문자열
      */
@@ -550,6 +584,7 @@ public class MegaMethod {
 
     /**
      * 문자열을 소문자로 변환합니다.
+     *
      * @param str 문자열
      * @return 소문자로 변환된 문자열
      */
@@ -559,6 +594,7 @@ public class MegaMethod {
 
     /**
      * 문자열의 앞뒤 공백을 제거합니다.
+     *
      * @param str 문자열
      * @return 공백이 제거된 문자열
      */
@@ -568,6 +604,7 @@ public class MegaMethod {
 
     /**
      * 배열의 최댓값을 찾습니다.
+     *
      * @param array 정수 배열
      * @return 배열의 최댓값
      * @throws IllegalArgumentException 배열이 비어있는 경우
@@ -587,6 +624,7 @@ public class MegaMethod {
 
     /**
      * 배열의 최솟값을 찾습니다.
+     *
      * @param array 정수 배열
      * @return 배열의 최솟값
      * @throws IllegalArgumentException 배열이 비어있는 경우
@@ -606,6 +644,7 @@ public class MegaMethod {
 
     /**
      * 배열의 합을 계산합니다.
+     *
      * @param array 정수 배열
      * @return 배열 요소들의 합
      */
@@ -620,6 +659,7 @@ public class MegaMethod {
 
     /**
      * 배열의 평균을 계산합니다.
+     *
      * @param array 정수 배열
      * @return 배열 요소들의 평균
      * @throws IllegalArgumentException 배열이 비어있는 경우
@@ -633,6 +673,7 @@ public class MegaMethod {
 
     /**
      * 배열을 역순으로 정렬합니다.
+     *
      * @param array 정수 배열
      */
     public static void reverseArray(int[] array) {
@@ -650,8 +691,9 @@ public class MegaMethod {
 
     /**
      * 리스트를 역순으로 반환합니다.
+     *
      * @param list 리스트
-     * @param <T> 리스트 요소의 타입
+     * @param <T>  리스트 요소의 타입
      * @return 역순으로 정렬된 새 리스트
      */
     public static <T> List<T> reverseList(List<T> list) {
@@ -663,9 +705,10 @@ public class MegaMethod {
 
     /**
      * 숫자를 범위 내로 제한합니다.
+     *
      * @param value 값
-     * @param min 최솟값
-     * @param max 최댓값
+     * @param min   최솟값
+     * @param max   최댓값
      * @return min과 max 사이로 제한된 값
      */
     public static int clamp(int value, int min, int max) {
@@ -675,6 +718,7 @@ public class MegaMethod {
 
     /**
      * 특정한 길이의 난수 문자열을 생성합니다.
+     *
      * @param length 문자열 길이
      * @return 생성된 난수 문자열
      * @throws IllegalArgumentException length가 음수인 경우
@@ -691,6 +735,66 @@ public class MegaMethod {
             randomString.append(characters.charAt(index));
         }
         return randomString.toString();
+    }
+
+    /**
+     * 특정한 길이의 난수 정수 배열을 생성합니다.
+     *
+     * @param length 배열 길이
+     * @param min    최소값 (포함)
+     * @param max    최대값 (미포함)
+     * @return 생성된 난수 정수 배열
+     * @throws IllegalArgumentException length가 음수이거나 min이 max보다 큰 경우
+     */
+    public static int[] generateRandomIntArray(int length, int min, int max) {
+        if (length < 0) {
+            throw new IllegalArgumentException("길이는 음수일 수 없습니다");
+        }
+        if (min >= max) {
+            throw new IllegalArgumentException("최소값은 최대값보다 작아야 합니다");
+        }
+        int[] randomArray = new int[length];
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            randomArray[i] = random.nextInt(max - min) + min;
+        }
+        return randomArray;
+    }
+
+    /**
+     * 문자의 ASCII 값을 반환합니다.
+     *
+     * @param ch 문자
+     * @return 문자의 ASCII 값
+     * @throws IllegalArgumentException ch가 ASCII 문자가 아닌 경우
+     */
+    public static int charToAscii(char ch) {
+        if (ch > 127) {
+            throw new IllegalArgumentException("문자는 ASCII 범위 내에 있어야 합니다");
+        }
+        return ch;
+    }
+
+    /**
+     * 문자열을 ASCII 값의 배열로 변환합니다.
+     *
+     * @param str 문자열
+     * @return 문자열의 각 문자의 ASCII 값 배열
+     * @throws IllegalArgumentException str에 ASCII 문자가 아닌 문자가 포함된 경우
+     */
+    public static int[] stringToAsciiArray(String str) {
+        if (str == null) {
+            return new int[0];
+        }
+        int[] asciiArray = new int[str.length()];
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch > 127) {
+                throw new IllegalArgumentException("문자는 ASCII 범위 내에 있어야 합니다");
+            }
+            asciiArray[i] = ch;
+        }
+        return asciiArray;
     }
 
     /**

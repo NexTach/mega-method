@@ -366,4 +366,57 @@ class MegaMethodTest {
             assertTrue(Character.isLetterOrDigit(c));
         }
     }
+
+    @Test
+    void testGenerateRandomIntArray() {
+        int length = 10;
+        int min = 5;
+        int max = 15;
+        int[] randomArray = MegaMethod.generateRandomIntArray(length, min, max);
+        assertNotNull(randomArray);
+        assertEquals(length, randomArray.length);
+        for (int value : randomArray) {
+            assertTrue(value >= min && value < max);
+        }
+    }
+
+    @Test
+    void testGenerateRandomIntArrayWithNegativeLength() {
+        assertThrows(IllegalArgumentException.class, () -> MegaMethod.generateRandomIntArray(-1, 0, 10));
+    }
+
+    @Test
+    void testGenerateRandomIntArrayWithInvalidRange() {
+        assertThrows(IllegalArgumentException.class, () -> MegaMethod.generateRandomIntArray(10, 10, 5));
+        assertThrows(IllegalArgumentException.class, () -> MegaMethod.generateRandomIntArray(10, 10, 10));
+    }
+
+    @Test
+    void testCharToAscii() {
+        assertEquals(65, MegaMethod.charToAscii('A'));
+        assertEquals(97, MegaMethod.charToAscii('a'));
+        assertEquals(48, MegaMethod.charToAscii('0'));
+        assertEquals(32, MegaMethod.charToAscii(' '));
+    }
+
+    @Test
+    void testCharToAsciiWithNonAscii() {
+        assertThrows(IllegalArgumentException.class, () -> MegaMethod.charToAscii('한'));
+        assertThrows(IllegalArgumentException.class, () -> MegaMethod.charToAscii('信'));
+    }
+
+    @Test
+    void testStringToAsciiArray() {
+        int[] expected = {72, 101, 108, 108, 111};
+        assertArrayEquals(expected, MegaMethod.stringToAsciiArray("Hello"));
+        assertArrayEquals(new int[]{65, 66, 67}, MegaMethod.stringToAsciiArray("ABC"));
+        assertArrayEquals(new int[0], MegaMethod.stringToAsciiArray(null));
+        assertArrayEquals(new int[0], MegaMethod.stringToAsciiArray(""));
+    }
+
+    @Test
+    void testStringToAsciiArrayWithNonAscii() {
+        assertThrows(IllegalArgumentException.class, () -> MegaMethod.stringToAsciiArray("Hello한글"));
+        assertThrows(IllegalArgumentException.class, () -> MegaMethod.stringToAsciiArray("Test😀"));
+    }
 }
